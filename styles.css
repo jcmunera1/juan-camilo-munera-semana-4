@@ -1,0 +1,27 @@
+header{
+  background-color:aqua;
+  font-family: 'Silkscreen';
+  font-size: 40px;
+  text-align: center;
+}
+section{
+  display: flex;
+  flex-direction: row;
+}
+.container1{
+  margin: 20px;
+  background-color:bisque;
+}
+.container2{
+  display: flex;
+  flex-direction: column;
+}
+.container3{
+  margin: 20px;
+  background-color:bisque;
+}
+.container4{
+  margin: 20px;
+  background-color:bisque;
+
+}
