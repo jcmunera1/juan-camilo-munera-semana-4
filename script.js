@@ -1,59 +1,41 @@
-let tasksArray = [
-  "Tarea de Diagramacion",
-  "Propuesta de Diseño Web",
-  "Ir a clase",
-  "Almorzar con mis amigos",
-  "Ir al Gimnasio",
-  "Leer twilight",
-  "Ir al estadio",
-  "Meditar",
+const tasksArray = [
+  { text: "Tarea de Diagramacion", done: true },
+  { text: "Propuesta de Diseño Web", done: true },
+  { text: "Ir a clase", done: true },
+  { text: "Almorzar con mis amigos", done: true },
+  { text: "Ir al Gimnasio", done: true },
+  { text: "Leer twilight", done: true },
+  { text: "Ir al estadio", done: false },
+  { text: "Meditar", done: true },
 ];
-let pendingArray = [
-  "Tarea de Diagramacion",
-  "Propuesta de Diseño Web",
-  "Ir a clase",
-  "Almorzar con mis amigos",
-  "Ir al Gimnasio",
-  "Leer twilight",
-  "Ir al estadio",
-  "Meditar",
-];
-let completedArray = [];
+const pendingArray = tasksArray.filter((task) => !task.done);
+const completedArray = tasksArray.filter((task) => task.done);
 
 // Getting an element from the html
-let tasks = document.getElementById("tasks");
-let pending = document.getElementById("pending");
-let completed = document.getElementById("completed");
+const tasks = document.getElementById("tasks");
+const pending = document.getElementById("pending");
+const completed = document.getElementById("completed");
+
+console.log(pendingArray);
+console.log(completedArray);
 
 //For each string item in the tasksArray...
 tasksArray.forEach((item) => {
   // Create the variable li and assign the textContent to the items
-  let li = document.createElement("li");
-  li.textContent = item;
+  const li = document.createElement("li");
+  li.textContent = item.text;
   li.className = "tasks-elements";
-  console.log(li);
+  li.setAttribute("id", "item");
+
+  //console.log(li);
   // Add var li to the list
   tasks.appendChild(li);
   // Event Listener: listen to event "click", when this happens, call the function "completeItem".
   li.addEventListener("click", (event) => crossItem(event));
   // Function called when the event "clicked" its active.
-  function crossItem(event) {
-    console.log(event.target);
-    // Do a forEach loop to iterate over the items in the list and change the style...
+  function crossItem() {
+    //console.log(event.target);
+    // change the style...
     li.style.textDecorationLine = "line-through	";
   }
-});
-pendingArray.forEach((item) => {
-  let li = document.createElement("li");
-  li.textContent = item;
-  li.className = "pending-elements";
-  pending.appendChild(li);
-  console.log(li);
-});
-completedArray.forEach((item) => {
-  let li = document.createElement("li");
-  li.textContent = item;
-  li.className = "completed-elements";
-  completed.appendChild(li);
-  console.log(li);
 });
