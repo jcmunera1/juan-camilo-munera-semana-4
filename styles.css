@@ -1,27 +1,68 @@
-header{
-  background-color:aqua;
-  font-family: 'Silkscreen';
+header {
+  background-color: #ef233c;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 700;
   font-size: 40px;
+  color: #edf2f4;
   text-align: center;
 }
-section{
+section {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 400;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  background-color: #2b2d42;
 }
-.column1{
-  margin: 20px;
-  background-color:bisque;
+h1 {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 700;
+  text-align: center;
+  font-size: 24px;
 }
-.column2{
+img {
+  width: 100%;
+  height: 100%;
+  border: white solid;
+}
+.column1 {
   display: flex;
   flex-direction: column;
 }
-.container1{
-  margin: 20px;
-  background-color:bisque;
+.column2 {
+  display: flex;
+  flex-direction: column;
 }
-.container2{
+.container1 {
   margin: 20px;
-  background-color:bisque;
+  background-color: #edf2f4;
+  height: 242px;
+  width: 406px;
+}
+.container2 {
+  margin: 20px;
+  background-color: #edf2f4;
+  height: 242px;
+  width: 406px;
+  display: flex;
+  justify-content: center;
+}
+.container3 {
+  margin: 20px;
+  background-color: #edf2f4;
+  height: 242px;
+  width: 406px;
+}
+.container4 {
+  margin: 20px;
+  background-color: #edf2f4;
+  height: 242px;
+  width: 406px;
+}
+.checked {
+  text-decoration: line-through;
+}
 
+.unchecked {
+  color: red;
 }

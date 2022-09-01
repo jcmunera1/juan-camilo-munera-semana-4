@@ -1,41 +1,50 @@
-const tasksArray = [
-  { text: "Tarea de Diagramacion", done: true },
-  { text: "Propuesta de Diseño Web", done: true },
-  { text: "Ir a clase", done: true },
-  { text: "Almorzar con mis amigos", done: true },
-  { text: "Ir al Gimnasio", done: true },
-  { text: "Leer twilight", done: true },
+const tasks = [
+  { text: "Tarea de Diagramacion", done: false },
+  { text: "Propuesta de Diseño Web", done: false },
+  { text: "Ir a clase", done: false },
+  { text: "Almorzar con mis amigos", done: false },
+  { text: "Ir al Gimnasio", done: false },
+  { text: "Leer twilight", done: false },
   { text: "Ir al estadio", done: false },
   { text: "Meditar", done: true },
 ];
-const pendingArray = tasksArray.filter((task) => !task.done);
-const completedArray = tasksArray.filter((task) => task.done);
 
 // Getting an element from the html
-const tasks = document.getElementById("tasks");
-const pending = document.getElementById("pending");
-const completed = document.getElementById("completed");
+const allTasksHtml = document.getElementById("tasks");
+const pendingHtml = document.getElementById("pending");
+const completedHtml = document.getElementById("completed");
 
-console.log(pendingArray);
-console.log(completedArray);
+function createTasks() {
+  //Empty arrays to avoid repeated elements
+  allTasksHtml.innerHTML = "";
+  pendingHtml.innerHTML = "";
+  completedHtml.innerHTML = "";
 
-//For each string item in the tasksArray...
-tasksArray.forEach((item) => {
-  // Create the variable li and assign the textContent to the items
-  const li = document.createElement("li");
-  li.textContent = item.text;
-  li.className = "tasks-elements";
-  li.setAttribute("id", "item");
+  //For each string item in the tasksArray...
+  tasks.forEach((task) => {
+    // Create the variable li and assign the textContent to the items
+    const elem = document.createElement("li");
+    elem.textContent = task.text;
+    elem.className = task.done ? "checked" : "unchecked";
+    // Event Listener: listen to event "click", when this happens, call the function "completeItem".
+    elem.addEventListener("click", () => crossItem(task));
+    //Create cost cloneLi to store the items
+    const cloneElem = elem.cloneNode(true);
+    //Add event listener to cloneLi when clicked
+    cloneElem.addEventListener("click", () => crossItem(task));
 
-  //console.log(li);
-  // Add var li to the list
-  tasks.appendChild(li);
-  // Event Listener: listen to event "click", when this happens, call the function "completeItem".
-  li.addEventListener("click", (event) => crossItem(event));
-  // Function called when the event "clicked" its active.
-  function crossItem() {
-    //console.log(event.target);
-    // change the style...
-    li.style.textDecorationLine = "line-through	";
-  }
-});
+    allTasksHtml.append(elem);
+
+    if (task.done) {
+      completedHtml.append(cloneElem);
+    } else {
+      pendingHtml.append(cloneElem);
+    }
+  });
+}
+createTasks();
+// Function called when the event "clicked" its active.
+function crossItem(item) {
+  item.done = !item.done;
+  createTasks();
+}
